@@ -1,5 +1,7 @@
 import 'package:demoapp/home/detail_screen.dart';
+import 'package:demoapp/utils/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CoffeeTile extends StatelessWidget {
@@ -14,8 +16,8 @@ class CoffeeTile extends StatelessWidget {
   Widget build(BuildContext context) {
     //coffee image
     return InkWell(
-      onTap: () => Navigator.push(
-          context, MaterialPageRoute(builder: (context) =>  DetailScreen(title: title,image: image,price: price,))),
+      onTap: () => context.pushNamed(Constants.detailScreenRoute,
+          queryParameters: {"title": title, "image": image, "price": price}),
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -26,16 +28,18 @@ class CoffeeTile extends StatelessWidget {
             borderRadius: BorderRadius.circular(16)),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           //Coffee Image
-          const SizedBox(height: 8,),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(16),
-            child: AspectRatio(
-              aspectRatio: 1,
-              child: Image.network(
-              image,
-              fit: BoxFit.cover,
-            ),)
+          const SizedBox(
+            height: 8,
           ),
+          ClipRRect(
+              borderRadius: BorderRadius.circular(16),
+              child: AspectRatio(
+                aspectRatio: 1,
+                child: Image.network(
+                  image,
+                  fit: BoxFit.cover,
+                ),
+              )),
           const SizedBox(
             height: 8,
           ),
@@ -51,44 +55,42 @@ class CoffeeTile extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-             
-                   RichText(
-            text: TextSpan(
-              style: const TextStyle(
-                fontSize: 14.0,
-                color: Colors.black,
-              ),
-              children: <TextSpan>[
-                TextSpan(
-                    text: '\$ ',
-                    style: GoogleFonts.poppins(
-                        fontSize: 24, color: Colors.orange)),
-                TextSpan(
-                    text: price,
-                    style: GoogleFonts.poppins(
-                        fontSize: 22,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white)),
-              ],
-            ),
-          ),
-            Container(
-                  padding: const EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
-                      color: Colors.orange,),
-                  child: InkWell(
-                          onTap: () {
-                          
-                          },
-                          child: const Icon(
-                            Icons.add,
-                            color:Colors.white,
-                            size: 16,
-                          )),
+              RichText(
+                text: TextSpan(
+                  style: const TextStyle(
+                    fontSize: 14.0,
+                    color: Colors.black,
+                  ),
+                  children: <TextSpan>[
+                    TextSpan(
+                        text: '\$ ',
+                        style: GoogleFonts.poppins(
+                            fontSize: 24, color: Colors.orange)),
+                    TextSpan(
+                        text: price,
+                        style: GoogleFonts.poppins(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white)),
+                  ],
                 ),
-            ],          ),
-          
+              ),
+              Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                  color: Colors.orange,
+                ),
+                child: InkWell(
+                    onTap: () {},
+                    child: const Icon(
+                      Icons.add,
+                      color: Colors.white,
+                      size: 16,
+                    )),
+              ),
+            ],
+          ),
         ]),
       ),
     );

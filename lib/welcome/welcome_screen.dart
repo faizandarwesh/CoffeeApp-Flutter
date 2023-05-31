@@ -1,6 +1,9 @@
 import 'package:demoapp/home/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../utils/constants.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
@@ -57,12 +60,7 @@ class WelcomeScreen extends StatelessWidget {
                   height: 5,
                 ),
                 ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const HomeScreen()));
-                  },
+                  onPressed: () => context.pushReplacementNamed(Constants.homeScreenRoute),
                   child: Padding(
                       padding: const EdgeInsets.all(16),
                       child: Text(
