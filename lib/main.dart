@@ -1,5 +1,4 @@
 import 'package:demoapp/router/app_router.dart';
-import 'package:demoapp/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

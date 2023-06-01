@@ -1,4 +1,3 @@
-import 'package:demoapp/home/detail_screen.dart';
 import 'package:demoapp/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
