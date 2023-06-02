@@ -4,19 +4,20 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CoffeeTile extends StatelessWidget {
+  final String id;
   final String title;
   final String image;
   final String price;
 
   const CoffeeTile(
-      {required this.title, required this.image, required this.price});
+      {required this.id,required this.title, required this.image, required this.price});
 
   @override
   Widget build(BuildContext context) {
     //coffee image
     return InkWell(
       onTap: () => context.pushNamed(Constants.detailScreenRoute,
-          queryParameters: {"title": title, "image": image, "price": price}),
+          queryParameters: {"id" : id,"title": title, "image": image, "price": price}),
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),

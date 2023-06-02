@@ -1,25 +1,28 @@
+import 'package:demoapp/service/firebase_service.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class DetailScreen extends StatefulWidget {
+  final String id;
   final String title;
   final String image;
   final String price;
 
   const DetailScreen(
-      {required this.title, required this.image, required this.price});
+      {required this.id,required this.title, required this.image, required this.price});
 
   @override
   State<DetailScreen> createState() => _DetailScreenState();
 }
 
 class _DetailScreenState extends State<DetailScreen> {
-  @override
-  Widget build(BuildContext context) {
 
     var counter = 1;
     var isFavorite = false;
+
+  @override
+  Widget build(BuildContext context) {
 
     final screenSize = MediaQuery.of(context).size;
 
@@ -58,9 +61,12 @@ class _DetailScreenState extends State<DetailScreen> {
                   ),
                   IconButton(
                       onPressed: () {
-                        setState(() {
-                          isFavorite!=isFavorite;
+                       print("favorite : $isFavorite : Product id : ${widget.id}");
+                       setState(() {
+                          isFavorite=!isFavorite;
                         });
+                       addToFavorite(widget.id,isFavorite);
+                      
                       }, icon:  Icon(isFavorite == true ? Icons.favorite :  Icons.favorite_border,size: 32,))
                 ],
               ),
@@ -185,5 +191,9 @@ class _DetailScreenState extends State<DetailScreen> {
             ]),
           )),
     );
+  }
+  
+  void addToFavorite(String id,bool isFavorite) async{
+   await FirebaseService.addToFavorites(id, isFavorite);
   }
 }

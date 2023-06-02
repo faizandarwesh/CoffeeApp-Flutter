@@ -1,8 +1,8 @@
-import 'package:demoapp/auth/login_screen.dart';
-import 'package:demoapp/home/detail_screen.dart';
-import 'package:demoapp/home/home_screen.dart';
+import 'package:demoapp/auth/ui/login_screen.dart';
+import 'package:demoapp/home/ui/detail_screen.dart';
+import 'package:demoapp/home/ui/home_screen.dart';
 import 'package:demoapp/utils/constants.dart';
-import 'package:demoapp/welcome/welcome_screen.dart';
+import 'package:demoapp/welcome/ui/welcome_screen.dart';
 import 'package:go_router/go_router.dart';
 
 class AppRouter {
@@ -20,6 +20,7 @@ class AppRouter {
             name: Constants.detailScreenRoute,
             path: "detailScreen",
             builder: (context, state) => DetailScreen(
+                id: state.queryParameters['id']!,
                 title: state.queryParameters['title']!,
                 image: state.queryParameters['image']!,
                 price: state.queryParameters['price']!),

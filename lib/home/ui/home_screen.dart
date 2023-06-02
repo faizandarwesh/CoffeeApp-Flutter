@@ -1,6 +1,6 @@
-import 'package:demoapp/cart/cart_screen.dart';
-import 'package:demoapp/favorite/favorite_screen.dart';
-import 'package:demoapp/notification/notification_screen.dart';
+import 'package:demoapp/cart/ui/cart_screen.dart';
+import 'package:demoapp/favorite/ui/favorite_screen.dart';
+import 'package:demoapp/notification/ui/notification_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../controller/coffee_controller.dart';
@@ -89,8 +89,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         controller: pageController,
         children: [
           CoffeeListingScreen(coffeeData: coffeeData),
-          const FavoriteScreen(),
           const CartScreen(),
+          const FavoriteScreen(),
           const NotificationScreen()
         ],
       ),

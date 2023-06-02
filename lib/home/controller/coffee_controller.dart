@@ -1,6 +1,6 @@
-import 'package:demoapp/firebase_service.dart';
+import 'package:demoapp/service/firebase_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../coffee.dart';
+import '../model/coffee.dart';
 
 // global provider
 final coffeeNotifier = StateNotifierProvider<CoffeeController, List<Coffee>>((ref) {

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../coffee.dart';
-import '../utils/coffee_tile.dart';
-import '../utils/special_coffee_tile.dart';
+import '../model/coffee.dart';
+import '../../utils/coffee_tile.dart';
+import '../../utils/special_coffee_tile.dart';
 
 class CoffeeListingScreen extends StatelessWidget {
   const CoffeeListingScreen({
@@ -46,6 +46,7 @@ class CoffeeListingScreen extends StatelessWidget {
               itemCount: coffeeData.length,
               itemBuilder: (context,index){
                 return CoffeeTile(
+                  id: coffeeData[index].id,
                   title: coffeeData[index].title,
                    image: coffeeData[index].imageUrl, 
                    price: coffeeData[index].price.toString());
